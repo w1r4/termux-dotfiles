@@ -14,7 +14,12 @@ if [ "${1}" = "-h" ] || [ "${1}" = "--help" ]; then
 	echo "  --all        Print IP address and other associated"
 	echo "               information."
 	echo
+	echo "  --asn        Print AS number."
+	echo
 	echo "  --host       Print host name (domain)."
+	echo
+	echo "  --isp        Print organisation name associated with"
+	echo "               current AS. Typically your ISP."
 	echo
 	echo "  --country    Print country."
 	echo
@@ -39,17 +44,25 @@ if ! jq '.' <(echo "${JSON_RESP}") >/dev/null 2>&1; then
 fi
 
 IP=$(echo "${JSON_RESP}" | jq --raw-output '.ip')
+AS=$(echo "${JSON_RESP}" | jq --raw-output '.asn')
+AS_ORG=$(echo "${JSON_RESP}" | jq --raw-output '.asn_org')
 HOSTNAME=$(echo "${JSON_RESP}" | jq --raw-output '.hostname')
 COUNTRY=$(echo "${JSON_RESP}" | jq --raw-output '.country')
 CITY=$(echo "${JSON_RESP}" | jq --raw-output '.city')
 
 if [ "${1}" = "--all" ]; then
 	echo "IP: ${IP}"
+	echo "AS: ${AS}"
+	echo "ISP: ${AS_ORG}"
 	echo "Hostname: ${HOSTNAME}"
 	echo "Country: ${COUNTRY}"
 	echo "City: ${CITY}"
+elif [ "${1}" = "--asn" ]; then
+	echo "${AS}"
 elif [ "${1}" = "--host" ]; then
 	echo "${HOSTNAME}"
+elif [ "${1}" = "--isp" ]; then
+	echo "${AS_ORG}"
 elif [ "${1}" = "--country" ]; then
 	echo "${COUNTRY}"
 elif [ "${1}" = "--city" ]; then
