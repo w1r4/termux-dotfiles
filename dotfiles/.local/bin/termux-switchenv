@@ -147,15 +147,15 @@ switch_environment() {
 				echo "fail"
 				exit 1
 			fi
+		fi
 
-			if [ -d "$BACKUP_PREFIX/etc/ssh" ] && [ ! -e "$path/etc/ssh" ]; then
-				echo -n "[*] Copying SSH configuration & host keys... "
-				if cp -a "$BACKUP_PREFIX/etc/ssh" "$path/etc/ssh" > /dev/null 2>&1; then
-					echo "ok"
-				else
-					echo "fail"
-					exit 1
-				fi
+		if [ -d "$BACKUP_PREFIX/etc/ssh" ] && [ ! -e "$path/etc/ssh" ]; then
+			echo -n "[*] Copying SSH configuration & host keys... "
+			if cp -a "$BACKUP_PREFIX/etc/ssh" "$path/etc/ssh" > /dev/null 2>&1; then
+				echo "ok"
+			else
+				echo "fail"
+				exit 1
 			fi
 		fi
 
