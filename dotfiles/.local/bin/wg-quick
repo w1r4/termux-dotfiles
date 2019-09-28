@@ -1,1 +1,8 @@
-/system/xbin/wg-quick
+#!/data/data/com.termux/files/usr/bin/sh
+##
+##  Wrapper for system-wide Wireguard Tools installation.
+##
+
+export PATH=/system/bin:/system/xbin
+unset LD_LIBRARY_PATH LD_PRELOAD
+exec /system/xbin/wg-quick "$@"
