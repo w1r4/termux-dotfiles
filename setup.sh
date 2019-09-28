@@ -74,3 +74,5 @@ fi
 
 echo
 echo "Done ! Now you need to restart Termux."
+sleep 1
+killall com.termux > /dev/null 2>&1
