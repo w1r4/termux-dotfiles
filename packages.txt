@@ -2,7 +2,6 @@
 # be installed by default.
 bash
 bat
-binutils
 bsdtar
 coreutils
 curl
