@@ -190,7 +190,7 @@ switch_environment() {
 
 	echo "[*] Done. Restart Termux application now."
 	sleep 1
-	killall "com.termux"
+	killall "com.termux" > /dev/null 2>&1
 }
 
 show_usage() {
