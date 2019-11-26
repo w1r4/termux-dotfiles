@@ -27,11 +27,11 @@ echo
 echo "[@] Installing script dependencies:"
 pkg install -y unstable-repo x11-repo
 
-if [ -f "$SCRIPT_DIR/packages.txt" ]; then
-	echo
-	echo "[@] Installing necessary packages:"
-	pkg install -y $(cat "$SCRIPT_DIR/packages.txt" | grep -vP '^(?:\s+)?#')
-fi
+#if [ -f "$SCRIPT_DIR/packages.txt" ]; then
+#	echo
+#	echo "[@] Installing necessary packages:"
+#	pkg install -y $(cat "$SCRIPT_DIR/packages.txt" | grep -vP '^(?:\s+)?#')
+#fi
 
 # Just replace objects in $HOME.
 if [ -d "$SCRIPT_DIR/dotfiles" ]; then
